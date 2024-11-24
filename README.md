@@ -1,25 +1,37 @@
-# marble-toast
+# Marble [![Build Status](https://travis-ci.org/wedeploy/marble.svg?branch=master)](https://travis-ci.org/wedeploy/marble)
 
-Marble's toast component.
+> A set of UI components behind [Electric](https://electricjs.com) and [WeDeploy](https://wedeploy.com).
 
 ## Setup
 
-1. Install NodeJS >= [v0.12.0](http://nodejs.org/dist/v0.12.0/), if you don't have it yet.
+1. Install NodeJS >= [v6.11.0](http://nodejs.org/dist/v6.11.0/), if you don't have it yet.
 
-2. Install local dependencies:
-
-  ```
-  npm install
-  ```
-
-3. Build the code:
+2. Install global dependencies:
 
   ```
-  npm run build
+  [sudo] npm install -g yarn
   ```
 
-4. Open `demos/index.html` on your browser.
+3. Install project dependencies:
 
-## License
+  ```
+  yarn install
+  ```
 
-[BSD License](https://github.com/wedeploy/marble/blob/master/LICENSE.md) © Liferay, Inc.
+4. Install dependencies for each package and link them together:
+
+  ```
+  npm start
+  ```
+
+5. Run tests for all packages:
+
+  ```
+  npm test
+  ```
+
+6. Publish packages:
+
+  ```
+  npm run publish
+  ```
