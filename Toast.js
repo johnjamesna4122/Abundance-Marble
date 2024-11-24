@@ -1,21 +1,66 @@
-import dom from 'metal-dom';
-import Toast from '../src/Toast';
+import Soy from 'metal-soy';
+import templates from './Toast.soy.js';
+import Alert from 'marble-alert';
+import 'marble-spinner';
 
-describe('Toast', () => {
-  it('should update spinner as done', (done) => {
-    var toast = new Toast({
-      spinner: true,
-      spinnerDone: false
-    });
+class Toast extends Alert {}
 
-    expect(!dom.hasClass(toast.element.querySelector('.spinner'), 'spinner-done')).toBeTruthy();
+Toast.STATE = {
+  /**
+   * Overrides `metal-alert` default values.
+   */
+  animClasses: {
+    value: {
+      show: 'animated slideInBottom',
+      hide: 'animated slideOutBottom',
+    },
+  },
 
-    toast.once('stateChanged', () => {
-      expect(dom.hasClass(toast.element.querySelector('.spinner'), 'spinner-done')).toBeTruthy();
+  /**
+   * Close button.
+   * @type {boolean}
+   * @default true
+   */
+  closeButton: {
+    value: true,
+  },
 
-      done();
-    });
+  /**
+   * The content of close button of the alert.
+   * @type {html|string}
+   */
+  closeButtonHtml: {},
 
-    toast.spinnerDone = true;
-  });
-});
+  /**
+   * Spinner indicating.
+   * @type {boolean}
+   * @default true
+   */
+  spinner: {
+    value: true,
+  },
+
+  /**
+   * The CSS classes that should be added to the spinner.
+   * @type {string}
+   */
+  spinnerClasses: {},
+
+  /**
+   * Spinner is marked as done.
+   * @type {boolean}
+   * @default false
+   */
+  spinnerDone: {
+    value: false,
+  },
+
+  visible: {
+    value: true,
+  },
+};
+
+Soy.register(Toast, templates);
+
+export {Toast};
+export default Toast;
